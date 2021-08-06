@@ -8,5 +8,7 @@ export default async function checkToken(req: Request, res: Response, next: Next
     const user = await userService.authenticate(token);
     if(user === null) return res.sendStatus(401);
 
+    res.locals.userId = user.id;
+
     next()
 }

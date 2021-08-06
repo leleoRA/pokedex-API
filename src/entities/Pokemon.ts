@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm";
+import User from "./User";
 
 @Entity("pokemons")
 export default class Pokemon{
@@ -28,4 +29,8 @@ export default class Pokemon{
 
     @Column({default: false})
     inMyPokemons: boolean;
+
+    @ManyToMany(() => User, user => user.pokemons)
+    @JoinTable()
+    users: User[]
   }
