@@ -54,5 +54,19 @@ export async function SignIn(user: SignInInterface) {
     return token;
   }
   return false;
+}
 
+export async function authenticate(token:string) {
+  const sessionRepository = getRepository(Session);
+  
+  const session = await sessionRepository.findOne({
+    where: {token},
+    relations: ['user']
+  })
+
+  if(session) {
+    return session.user
+  } else {
+    return null;
+  }
 }
