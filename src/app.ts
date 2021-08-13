@@ -18,6 +18,7 @@ app.post("/sign-up", userController.SignUp);
 app.post("/sign-in", userController.SignIn);
 app.get("/pokemons", auth, pokemonController.GetPokemons);
 app.post("/my-pokemons/:id/add", auth, pokemonController.catchPokemons);
+app.post("/my-pokemons/:id/add", auth, pokemonController.removePokemons);
 
 export async function init () {
   await connectDatabase();

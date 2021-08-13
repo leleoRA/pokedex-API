@@ -14,14 +14,28 @@ export async function GetPokemons (req: Request, res: Response) {
   }
 
 export async function catchPokemons(req: Request, res: Response) {
-try {
-    const userId = res.locals.userId;
-    const id = parseInt(req.params.id);
-    await pokemonService.catchPokemons(id, userId);
-    res.sendStatus(200);
-} catch(err) {
-    console.log(err);
-    res.status(500).send(err);
-}    
-}
+  try {
+      const userId = res.locals.userId;
+      const pokemonId = parseInt(req.params.id);
+      const action = "add";
+      await pokemonService.catchPokemons(pokemonId, userId, action);
+      res.sendStatus(200);
+  } catch(err) {
+      console.log(err);
+      res.status(500).send(err);
+  }    
+};
+
+export async function removePokemons(req: Request, res: Response) {
+  try {
+      const userId = res.locals.userId;
+      const pokemonId = parseInt(req.params.id);
+      const action = "remove";
+      await pokemonService.catchPokemons(pokemonId, userId, action);
+      res.sendStatus(200);
+  } catch(err) {
+      console.log(err);
+      res.status(500).send(err);
+  }    
+};
   
