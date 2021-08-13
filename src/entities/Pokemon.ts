@@ -27,9 +27,6 @@ export default class Pokemon{
     @Column()
     description: string;
 
-    @Column({default: false})
-    inMyPokemons: boolean;
-
     @ManyToMany(() => User, user => user.pokemons)
     @JoinTable()
     users: User[]
