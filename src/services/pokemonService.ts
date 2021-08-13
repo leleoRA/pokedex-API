@@ -32,7 +32,6 @@ export async function GetPokemons(userId: number) {
         )
     })
 
-    console.log(typeof(pokes))
     return pokes;
 
 }
@@ -55,46 +54,3 @@ export async function catchPokemons(pokemonId:number, userId: number, action: st
 
     await getRepository(Pokemon).save(pokemon);
 }
-
-
-    // const pokemonTrainer = await getRepository(User).findOne({
-    //     where: {id: userId}, relations: ['pokemons']
-    // });
-
-    // const pokemonRepository = getRepository(Pokemon);
-
-    // const pokemons = await pokemonRepository.find();
-    // pokemons.map((pokemon:newPokemon) => {
-    //     if(pokemonTrainer.pokemons.includes(pokemon)) {
-    //         pokemon.inMyPokemons = true;
-    //     } else {
-    //         pokemon.inMyPokemons = false;
-    //     }
-    // });
-
-    // return pokemons;
-
-
-// =====
-
-// const pokemons = await getRepository(Pokemon).createQueryBuilder("pokemon")
-// .leftJoinAndSelect("pokemon.users", "users", "user.id = :userId", {
-//     userId: userId
-// }).getMany();
-
-// console.log(pokemons)
-
-// const newPokemons = pokemons.map((pokemon: Pokemon) => {
-// return {
-//     id: pokemon.id,
-//     name: pokemon.name,
-//     number: pokemon.number,
-//     image: pokemon.image,
-//     weight: pokemon.weight,
-//     height: pokemon.height,
-//     baseExp: pokemon.baseExp,
-//     description: pokemon.description,
-//     inMyPokemons: (pokemon.users.length > 0)
-// }
-// })
-// console.log(newPokemons[3]);
